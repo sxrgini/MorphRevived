@@ -165,7 +165,7 @@ public class BiomassScreen extends Screen
             g.text(font, Component.translatable("morph.upgrade." + info.id + ".name"), nx + 5, ny + 5, unlocked ? 0xFFFFFFFF : 0xFF777777, false);
             String lv = info.maxLevel != null && info.maxLevel == 1 ? (level > 0 ? "✔" : "") : "Lv " + level + (info.maxLevel != null ? "/" + info.maxLevel : "");
             g.text(font, lv, nx + 5, ny + 17, 0xFFAAAAAA, false);
-            Component costText = maxed ? Component.translatable("morph.gui.max") : Component.literal((long)cost + " BM");
+            Component costText = maxed ? Component.translatable("morph.gui.max") : Component.literal((long)cost + " " + com.iiampanda.morph.api.AddonApi.costUnit);
             g.text(font, costText, nx + NODE_W - 5 - font.width(costText), ny + 27, affordable ? 0xFF55FF55 : 0xFFAA7777, false);
             if(hover)
             {
@@ -277,9 +277,9 @@ public class BiomassScreen extends Screen
         double cur = ClientState.DATA.biomass;
         int bw = 180, bx = width / 2 - bw / 2;
         g.fill(bx - 1, 18, bx + bw + 1, 27, 0xFF000000);
-        g.fill(bx, 19, bx + bw, 26, 0xFF2A1A1A);
-        g.fill(bx, 19, bx + (int)(bw * Math.min(1D, cur / max)), 26, 0xFFB03A2E);
-        g.centeredText(font, Component.translatable("morph.gui.biomass.amount", fmt(Math.floor(cur * 10) / 10), fmt(max)), width / 2, 18, 0xFFFFFFFF);
+        g.fill(bx, 19, bx + bw, 26, com.iiampanda.morph.api.AddonApi.barBack);
+        g.fill(bx, 19, bx + (int)(bw * Math.min(1D, cur / max)), 26, com.iiampanda.morph.api.AddonApi.barFill);
+        g.centeredText(font, Component.translatable(com.iiampanda.morph.api.AddonApi.resourceAmountKey, fmt(Math.floor(cur * 10) / 10), fmt(max)), width / 2, 18, 0xFFFFFFFF);
 
         if(!ClientState.usesBiomass())
         {
