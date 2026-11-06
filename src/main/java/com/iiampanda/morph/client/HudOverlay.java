@@ -33,10 +33,10 @@ public final class HudOverlay
             double cur = ClientState.DATA.biomass;
             int x = 6, y = 6, bw = 90;
             g.fill(x - 1, y - 1, x + bw + 1, y + 8, 0xFF000000);
-            g.fill(x, y, x + bw, y + 7, 0xFF2A1A1A);
-            g.fill(x, y, x + (int)(bw * Math.min(1D, cur / max)), y + 7, 0xFFB03A2E);
+            g.fill(x, y, x + bw, y + 7, com.iiampanda.morph.api.AddonApi.barBack);
+            g.fill(x, y, x + (int)(bw * Math.min(1D, cur / max)), y + 7, com.iiampanda.morph.api.AddonApi.barFill);
             String text = String.format(Locale.ROOT, "%.0f / %.0f", cur, max);
-            g.text(mc.font, Component.translatable("morph.hud.biomass"), x, y + 10, 0xFFFFCCCC, true);
+            g.text(mc.font, Component.translatable(com.iiampanda.morph.api.AddonApi.resourceNameKey), x, y + 10, com.iiampanda.morph.api.AddonApi.barLabel, true);
             g.text(mc.font, text, x + bw - mc.font.width(text), y + 10, 0xFFFFFFFF, true);
         }
 
