@@ -87,7 +87,13 @@ public class MorphClient
             Platform.sendToServer(new Packets.UseSpecial());
         }
         prevUse = use;
-        if(ClientState.oneMorph())
+        if(com.iiampanda.morph.api.AddonApi.keysDisabled)
+        {
+            while(KEY_SELECTOR.consumeClick() | KEY_BIOMASS.consumeClick() | KEY_ABILITIES.consumeClick() | KEY_DEMORPH.consumeClick() | KEY_LAST.consumeClick())
+            {
+            }
+        }
+        else if(ClientState.oneMorph())
         {
             while(KEY_SELECTOR.consumeClick() | KEY_BIOMASS.consumeClick() | KEY_ABILITIES.consumeClick())
             {
